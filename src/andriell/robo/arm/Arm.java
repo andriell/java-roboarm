@@ -6,16 +6,12 @@ import andriell.robo.arm.gui.ImagePane;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Arm extends D3Object implements ImagePane.Entity {
+public class Arm implements ImagePane.Entity {
     private BufferedImage image;
     private final double armSize = 500;
     private Stroke stroke1 = new BasicStroke(1);
     private Stroke stroke2 = new BasicStroke(2);
-    private Color[] edgesColor = new Color[] {
-            new Color(255,0,0),
-            new Color(0,255,0),
-            new Color(0,0,255),
-    };
+    private D3Object d3 = new D3Object(3);
 
     private int[] WH = {600, 600};
 
@@ -25,10 +21,10 @@ public class Arm extends D3Object implements ImagePane.Entity {
 
     public Arm() {
         image = new BufferedImage(WH[0], WH[1], BufferedImage.TYPE_4BYTE_ABGR);
-        setMaxPoints(3);
-        setRotationAngle(0, 45);
-        setRotationAngle(1, 45);
-        setRotationAngle(2, 45);
+        d3 = new D3Object(3);
+        d3.setRotation(0, 45);
+        d3.setRotation(1, 45);
+        d3.setRotation(2, 45);
     }
 
 
@@ -68,18 +64,28 @@ public class Arm extends D3Object implements ImagePane.Entity {
 
         g.setStroke(stroke2);
 
-        points[0][0] = 0d;
-        points[0][1] = 0d;
-        points[0][2] = 0d;
+        double[][] points = new double[3][];
+        points[0] = new double[]{0d, 0d, 0d};
+        d3.setPoint(0, points[0]);
 
+        points[1] = new double[3];
         points[1][0] = armSize * Math.cos(Math.PI / 180 * a1);
         points[1][1] = armSize * Math.sin(Math.PI / 180 * a1);
         points[1][2] = armSize * Math.sin(Math.PI / 180 * a2);
+        d3.setPoint(1, points[1]);
 
-        double newPoints[][] = getPoints();
+        points[2] = new double[3];
+        points[2][0] = points[1][0] + armSize * Math.cos(Math.PI / 180 * a1);
+        points[2][1] = points[1][1] + armSize * Math.sin(Math.PI / 180 * a1);
+        points[2][2] = points[1][2] + armSize * Math.sin(Math.PI / 180 * a3);
+        d3.setPoint(2, points[2]);
+
+        points = d3.calculatePoints();
 
         g.setColor(Color.red);
-        g.drawLine((int) newPoints[0][0], (int) newPoints[0][1], (int) newPoints[1][0], (int) newPoints[1][1]);
+        g.drawLine((int) points[0][0], (int) points[0][1], (int) points[1][0], (int) points[1][1]);
+        g.setColor(Color.green);
+        g.drawLine((int) points[1][0], (int) points[1][1], (int) points[2][0], (int) points[2][1]);
 
 
     }

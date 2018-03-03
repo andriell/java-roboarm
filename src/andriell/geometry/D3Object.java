@@ -5,19 +5,33 @@ package andriell.geometry;
  */
 public class D3Object {
     private final int l = 3;
-    protected double points[][] = new double[0][];
+    protected double points[][];
     private double[] translation = new double[]{0d, 0d, 0d};
     private double[] rotation = new double[]{0d, 0d, 0d};
     private double size = 1d;
     private double[] cos = {1d, 1d, 1d};
     private double[] sin = {1d, 1d, 1d};
 
-    public double[][] getPoints() {
+    public D3Object(int maxPoints) {
+        points = new double[maxPoints][];
+        for (int i = 0; i < maxPoints; i++) {
+            points[i] = new double[3];
+        }
+    }
+
+    public double[][] calculatePoints() {
         double[][] r = new double[points.length][];
         for (int i = 0; i < points.length; i++) {
             r[i] = calculatePoint(points[i]);
         }
         return r;
+    }
+
+    public double[] calculatePoint(int i) {
+        if (i < 0 || i > points.length) {
+            return null;
+        }
+        return calculatePoint(points[i]);
     }
 
     protected double[] calculatePoint(double[] p) {
@@ -28,15 +42,11 @@ public class D3Object {
         return r;
     }
 
-    public void setMaxPoints(int s) {
-        points = new double[s][];
-        for (int i = 0; i < s; i++) {
-            points[i] = new double[3];
+    public void setPoint(int i, int j, double v) {
+        if (i < 0 || i > points.length || j < 0 || j > l) {
+            return;
         }
-    }
-
-    public int getMaxPoints(int s) {
-        return points.length;
+        points[i][j] = v;
     }
 
     public void setPoint(int i, double[] xyz) {
@@ -73,17 +83,8 @@ public class D3Object {
             return;
         }
         rotation[i] = v;
-        cos[i] = Math.cos(rotation[i]);
-        sin[i] = Math.sin(rotation[i]);
-    }
-
-    public void setRotationAngle(int i, double v) {
-        if (i < 0 || i > l) {
-            return;
-        }
-        rotation[i] = (Math.PI * v) / 180d;
-        cos[i] = Math.cos(rotation[i]);
-        sin[i] = Math.sin(rotation[i]);
+        cos[i] = Math.cos((Math.PI * v) / 180d);
+        sin[i] = Math.sin((Math.PI * v) / 180d);
     }
 
     public double getRotation(int i) {
