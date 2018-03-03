@@ -75,9 +75,9 @@ public class Arm implements ImagePane.Entity {
         d3.setPoint(1, points[1]);
 
         points[2] = new double[3];
-        points[2][0] = points[1][0] + armSize * Math.cos(Math.PI / 180 * a1);
-        points[2][1] = points[1][1] + armSize * Math.sin(Math.PI / 180 * a1);
-        points[2][2] = points[1][2] + armSize * Math.sin(Math.PI / 180 * a3);
+        points[2][0] = points[1][0] + armSize * Math.cos(Math.PI / 180 * (a3 + a2)) * Math.cos(Math.PI / 180 * a1);
+        points[2][1] = points[1][1] + armSize * Math.cos(Math.PI / 180 * (a3 + a2)) * Math.sin(Math.PI / 180 * a1);
+        points[2][2] = points[1][2] + armSize * Math.sin(Math.PI / 180 * (a3 + a2));
         d3.setPoint(2, points[2]);
 
         points = d3.calculatePoints();

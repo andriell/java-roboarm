@@ -78,16 +78,16 @@ public class MainFrame {
 
         resetButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                rotationXY.setValue(0);
+                rotationXY.setValue(90);
                 rotationXZ.setValue(0);
-                rotationYZ.setValue(0);
+                rotationYZ.setValue(90);
                 translationX.setValue(0);
                 translationY.setValue(0);
                 translationZ.setValue(0);
-                sliderSize.setValue(100);
-                servo1.setValue(0);
-                servo2.setValue(0);
-                servo3.setValue(0);
+                sliderSize.setValue(50);
+                servo1.setValue(90);
+                servo2.setValue(90);
+                servo3.setValue(90);
                 update();
             }
         });

@@ -35,7 +35,7 @@
               <paintTicks value="true"/>
               <paintTrack value="true"/>
               <toolTipText value=""/>
-              <value value="0"/>
+              <value value="90"/>
             </properties>
           </component>
           <component id="62119" class="javax.swing.JSlider" binding="rotationXZ">
@@ -63,7 +63,7 @@
               <minorTickSpacing value="15"/>
               <paintLabels value="false"/>
               <paintTicks value="true"/>
-              <value value="0"/>
+              <value value="90"/>
             </properties>
           </component>
           <component id="2afc9" class="javax.swing.JLabel">
@@ -292,7 +292,7 @@
               <minorTickSpacing value="15"/>
               <paintLabels value="false"/>
               <paintTicks value="true"/>
-              <value value="0"/>
+              <value value="90"/>
             </properties>
           </component>
           <component id="ff1c1" class="javax.swing.JLabel">
@@ -322,7 +322,7 @@
               <minorTickSpacing value="15"/>
               <paintLabels value="false"/>
               <paintTicks value="true"/>
-              <value value="0"/>
+              <value value="90"/>
             </properties>
           </component>
           <component id="b64f9" class="javax.swing.JLabel">
@@ -352,7 +352,7 @@
               <minorTickSpacing value="15"/>
               <paintLabels value="false"/>
               <paintTicks value="true"/>
-              <value value="0"/>
+              <value value="90"/>
             </properties>
           </component>
         </children>
