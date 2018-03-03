@@ -86,7 +86,9 @@ public class Arm implements ImagePane.Entity {
         g.drawLine((int) points[0][0], (int) points[0][1], (int) points[1][0], (int) points[1][1]);
         g.setColor(Color.green);
         g.drawLine((int) points[1][0], (int) points[1][1], (int) points[2][0], (int) points[2][1]);
+    }
 
-
+    public D3Object getD3() {
+        return d3;
     }
 }
