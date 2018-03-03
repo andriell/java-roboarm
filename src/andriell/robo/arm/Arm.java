@@ -22,9 +22,9 @@ public class Arm implements ImagePane.Entity {
     public Arm() {
         image = new BufferedImage(WH[0], WH[1], BufferedImage.TYPE_4BYTE_ABGR);
         d3 = new D3Object(3);
-        d3.setRotation(0, 45);
-        d3.setRotation(1, 45);
-        d3.setRotation(2, 45);
+        d3.setTranslation(0, 300);
+        d3.setTranslation(1, 300);
+        d3.setTranslation(2, 300);
     }
 
 

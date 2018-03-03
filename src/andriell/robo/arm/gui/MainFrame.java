@@ -24,7 +24,6 @@ public class MainFrame {
     private JSlider rotationXZ;
     private JSlider rotationYZ;
     private JButton saveButton;
-    private JCheckBox autoCheckBox;
     private JLabel vrxy;
     private JLabel vrxz;
     private JLabel vryz;
@@ -133,19 +132,19 @@ public class MainFrame {
 
         value = translationX.getValue();
         vtx.setText(Integer.toString(value));
-        arm.getD3().setTranslation(0, value);
+        arm.getD3().setTranslation(0, value + 300);
 
         value = translationY.getValue();
         vty.setText(Integer.toString(value));
-        arm.getD3().setTranslation(1, value);
+        arm.getD3().setTranslation(1, value + 300);
 
         value = translationZ.getValue();
         vtz.setText(Integer.toString(value));
-        arm.getD3().setTranslation(2, value);
+        arm.getD3().setTranslation(2, value + 300);
 
-        value = sliderSize.getValue() / 100;
-        vtx.setText(Integer.toString(value));
-        arm.getD3().setSize(value);
+        double valueD = ((double) sliderSize.getValue()) / 100d;
+        vs.setText(Double.toString(valueD));
+        arm.getD3().setSize(valueD);
         
         value = servo1.getValue();
         vs1.setText(Integer.toString(value));
