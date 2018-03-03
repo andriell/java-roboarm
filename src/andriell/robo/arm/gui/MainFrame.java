@@ -120,7 +120,7 @@ public class MainFrame {
         int value;
         value = rotationXY.getValue();
         vrxy.setText(Integer.toString(value));
-        arm.getD3().setRotation(0, value);
+        arm.getD3().setRotation(2, value);
 
         value = rotationXZ.getValue();
         vrxz.setText(Integer.toString(value));
@@ -128,7 +128,7 @@ public class MainFrame {
 
         value = rotationYZ.getValue();
         vryz.setText(Integer.toString(value));
-        arm.getD3().setRotation(2, value);
+        arm.getD3().setRotation(0, value);
 
         value = translationX.getValue();
         vtx.setText(Integer.toString(value));
