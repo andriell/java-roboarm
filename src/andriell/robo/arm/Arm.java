@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 public class Arm implements ImagePane.Entity {
     private BufferedImage image;
-    private final double armSize = 500;
+    private final double armSize = 200;
     private Stroke stroke1 = new BasicStroke(1);
     private Stroke stroke2 = new BasicStroke(2);
     private D3Object d3 = new D3Object(3);
@@ -21,7 +21,7 @@ public class Arm implements ImagePane.Entity {
 
     public Arm() {
         image = new BufferedImage(WH[0], WH[1], BufferedImage.TYPE_4BYTE_ABGR);
-        d3 = new D3Object(3);
+        d3 = new D3Object(4);
         d3.setTranslation(0, 300);
         d3.setTranslation(1, 300);
         d3.setTranslation(2, 300);
@@ -69,8 +69,8 @@ public class Arm implements ImagePane.Entity {
         d3.setPoint(0, points[0]);
 
         points[1] = new double[3];
-        points[1][0] = armSize * Math.cos(Math.PI / 180 * a1);
-        points[1][1] = armSize * Math.sin(Math.PI / 180 * a1);
+        points[1][0] = armSize * Math.cos(Math.PI / 180 * a2) * Math.cos(Math.PI / 180 * a1);
+        points[1][1] = armSize * Math.cos(Math.PI / 180 * a2) * Math.sin(Math.PI / 180 * a1);
         points[1][2] = armSize * Math.sin(Math.PI / 180 * a2);
         d3.setPoint(1, points[1]);
 
@@ -86,6 +86,18 @@ public class Arm implements ImagePane.Entity {
         g.drawLine((int) points[0][0], (int) points[0][1], (int) points[1][0], (int) points[1][1]);
         g.setColor(Color.green);
         g.drawLine((int) points[1][0], (int) points[1][1], (int) points[2][0], (int) points[2][1]);
+
+        d3.setPoint(0, new double[]{-50d,  50d, 0d});
+        d3.setPoint(1, new double[]{ 50d,  50d, 0d});
+        d3.setPoint(2, new double[]{ 50d, -50d, 0d});
+        d3.setPoint(3, new double[]{-50d, -50d, 0d});
+
+        points = d3.calculatePoints();
+        g.setColor(Color.black);
+        g.drawLine((int) points[0][0], (int) points[0][1], (int) points[1][0], (int) points[1][1]);
+        g.drawLine((int) points[1][0], (int) points[1][1], (int) points[2][0], (int) points[2][1]);
+        g.drawLine((int) points[2][0], (int) points[2][1], (int) points[3][0], (int) points[3][1]);
+        g.drawLine((int) points[3][0], (int) points[3][1], (int) points[0][0], (int) points[0][1]);
     }
 
     public D3Object getD3() {

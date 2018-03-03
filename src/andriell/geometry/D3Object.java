@@ -36,9 +36,9 @@ public class D3Object {
 
     protected double[] calculatePoint(double[] p) {
         double[] r = new double[l];
-        r[0] = translation[0] + size * (cos[1] * cos[2] * p[0] + p[2] * sin[1] - cos[1] * p[1] * sin[2]);
-        r[1] = translation[1] + size * (-cos[1] * p[2] * sin[0] + p[0] * (cos[2] * sin[0] * sin[1] + cos[0] * sin[2]) + p[1] * (cos[0] * cos[2] - sin[0] * sin[1] * sin[2]));
-        r[2] = translation[2] + size * (cos[0] * cos[1] * p[2] + p[0] * (-cos[0] * cos[2] * sin[1] + sin[0] * sin[2]) + p[1] * (cos[2] * sin[0] + cos[0] * sin[1] * sin[2]));
+        r[0] = translation[0] + size * (p[0] * cos[1] * cos[2] - p[2] * sin[1] - p[1] * cos[1] * sin[2]);
+        r[1] = translation[1] + size * (p[1] * (cos[0] * cos[2] + sin[0] * sin[1] * sin[2]) - p[2] * cos[1] * sin[0] + p[0] * (cos[0] * sin[2] - cos[2] * sin[0] * sin[1]));
+        r[2] = translation[2] + size * (p[2] * cos[0] * cos[1] + p[0] * (cos[0] * cos[2] * sin[1] + sin[0] * sin[2]) + p[1] * (cos[2] * sin[0] - cos[0] * sin[1] * sin[2]));
         return r;
     }
 
